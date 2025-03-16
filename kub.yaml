@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-crud-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-crud-app
+  template:
+    metadata:
+      labels:
+        app: python-crud-app
+    spec:
+      containers:
+      - name: python-crud-app
+        image: python-crud-app:latest
+        imagePullPolicy: Never  # Prevents Kubernetes from trying to pull from DockerHub
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-crud-app-service
+spec:
+  selector:
+    app: python-crud-app
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 5000
+  type: LoadBalancer
