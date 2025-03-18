@@ -15,7 +15,7 @@ spec:
       containers:
       - name: python-crud-app
         image: python-crud-app:latest
-        imagePullPolicy: Never  # Prevents Kubernetes from trying to pull from DockerHub
+        imagePullPolicy: Never 
         ports:
         - containerPort: 5000
 ---
