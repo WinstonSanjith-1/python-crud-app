@@ -2,7 +2,6 @@ from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
-# In-memory data storage
 items = {}
 
 @app.get("/")
